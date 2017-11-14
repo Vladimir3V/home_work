@@ -1,5 +1,5 @@
-import React, {PureComponent} from 'react';
-import Comment from "./Comment.js"
+import React, { PureComponent } from "react";
+import Comment from "./Comment.js";
 
 let commentId = 0;
 
@@ -11,9 +11,7 @@ function setCommentId() {
 class NewsPost extends PureComponent {
   state = {
     commentInput: "",
-    comments: [
-
-    ]
+    comments: []
   };
 
   handleChange = event => {
@@ -23,7 +21,7 @@ class NewsPost extends PureComponent {
 
   handleKeyDown = event => {
     if (event.keyCode === 13 && this.state.commentsInput !== "") {
-      const {commentInput, comments} = this.state;
+      const { commentInput, comments } = this.state;
       const commentAdd = { text: commentInput, id: setCommentId() };
       this.setState({ commentInput: "", comments: [...comments, commentAdd] });
     }
@@ -48,20 +46,18 @@ class NewsPost extends PureComponent {
           className="input"
         />
         <div>
-          {comments.map(
-            comment => 
-                <Comment 
-                text={comment.text} 
-                key={comment.id} 
-                onDelete={this.handleDelete}
-                id={comment.id}
-                />
-          )}
+          {comments.map(comment => (
+            <Comment
+              text={comment.text}
+              key={comment.id}
+              onDelete={this.handleDelete}
+              id={comment.id}
+            />
+          ))}
         </div>
       </div>
     );
   }
 }
-
 
 export default NewsPost;

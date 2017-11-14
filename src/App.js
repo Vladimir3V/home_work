@@ -1,8 +1,6 @@
 import React, { PureComponent } from "react";
 import "./App.css";
-import NewsPost from "./NewsPost"
-
-
+import NewsPost from "./NewsPost";
 
 class App extends PureComponent {
   state = {
@@ -17,10 +15,10 @@ class App extends PureComponent {
 
   handleKeyDown = event => {
     if (event.keyCode === 13) {
-      const {newsInput, news} = this.state;
-      this.setState({ newsInput: "", news: [...news, {text:newsInput}] });
-  }
-};
+      const { newsInput, news } = this.state;
+      this.setState({ newsInput: "", news: [...news, { text: newsInput }] });
+    }
+  };
 
   render() {
     const { newsInput, news } = this.state;
@@ -36,12 +34,8 @@ class App extends PureComponent {
         </div>
         <div>
           {news.map(
-            (newsPost) =>
-              newsPost ? (
-                <NewsPost text={newsPost.text} key={newsPost}/>
-              ) : (
-                ""
-              )
+            newsPost =>
+              newsPost ? <NewsPost text={newsPost.text} key={newsPost} /> : ""
           )}
         </div>
       </div>
@@ -49,7 +43,4 @@ class App extends PureComponent {
   }
 }
 
-
 export default App;
-
-
