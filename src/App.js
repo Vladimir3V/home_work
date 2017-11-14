@@ -18,7 +18,7 @@ class App extends PureComponent {
   handleKeyDown = event => {
     if (event.keyCode === 13) {
       const {newsInput, news} = this.state;
-      this.setState({ newsInput: "", news: [...news, newsInput] });
+      this.setState({ newsInput: "", news: [...news, {text:newsInput}] });
   }
 };
 
@@ -36,9 +36,9 @@ class App extends PureComponent {
         </div>
         <div>
           {news.map(
-            (newsPost, index) =>
+            (newsPost) =>
               newsPost ? (
-                <NewsPost text={newsPost} key={newsPost}/>
+                <NewsPost text={newsPost.text} key={newsPost}/>
               ) : (
                 ""
               )

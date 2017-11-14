@@ -9,9 +9,9 @@ class Comment extends PureComponent {
     };
   
     render() {
-      const { text } = this.props;
+      const { id, text } = this.props;
       return (
-        <div>
+        <div data-id={id}>
         <p> {text} </p> 
         <span 
         className='delete' 
